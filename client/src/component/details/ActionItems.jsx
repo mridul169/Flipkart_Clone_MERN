@@ -15,12 +15,18 @@ const Image = styled("img")({
   padding: "15",
 });
 
-const StyledButton = styled(Button)`
-  width: 48%;
-  border-radius: 4px;
-  height: 50px;
-  color: #fff;
-`;
+const StyledButton = styled(Button)(({ theme }) => ({
+  width: "48%",
+  borderRadius: 4,
+  height: "50",
+  color: "#fff",
+  [theme.breakpoints.down("lg")]: {
+    width: "46%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "48%",
+  },
+}));
 
 const ActionItems = ({ product }) => {
   return (

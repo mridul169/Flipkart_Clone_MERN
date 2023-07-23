@@ -14,7 +14,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
     color: "#FFFFFF",
     fontSize: 16,
     alignItems: "center",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       color: "#2874f0",
       alignItems: "center",
       display: "flex",
@@ -22,7 +22,7 @@ const Wrapper = styled(Box)(({ theme }) => ({
       marginTop: 10,
     },
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "block",
   },
 }));
@@ -36,7 +36,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
   padding: "5px 40px",
   height: 32,
   boxShadow: "none",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     background: "#2874f0",
     color: "#FFFFFF",
   },
@@ -44,7 +44,7 @@ const LoginButton = styled(Button)(({ theme }) => ({
 
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     display: "block",
   },
 }));
@@ -52,7 +52,7 @@ const Container = styled(Box)(({ theme }) => ({
 const CustomButtons = () => {
   const [openLogin, setOpenLogin] = useState(false);
 
-  const { account,setAccount } = useContext(LoginContext);
+  const { account, setAccount } = useContext(LoginContext);
 
   const openDialog = () => {
     setOpenLogin(true);
@@ -61,7 +61,7 @@ const CustomButtons = () => {
     <>
       <Wrapper>
         {account ? (
-          <Profile account={account} setAccount={setAccount}/>
+          <Profile account={account} setAccount={setAccount} />
         ) : (
           <LoginButton variant="contained" onClick={() => openDialog()}>
             Login
