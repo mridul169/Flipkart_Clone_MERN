@@ -1,5 +1,4 @@
-import styled from "@emotion/styled";
-import { InputBase, Box } from "@mui/material";
+import { InputBase, Box, List, ListItem, styled } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,6 +25,12 @@ const SearchIconWrapper = styled(Box)`
   display: flex;
   color: blue;
 `;
+const ListWrapper = styled(List)`
+  position: absolute;
+  color: #000;
+  background: #ffffff;
+  margin-top: 36px;
+`;
 
 const Search = () => {
   const [text, setText] = useState();
@@ -51,10 +56,32 @@ const Search = () => {
         <InputSearchBase
           placeholder="Search for product"
           onChange={(e) => getText(e.target.value)}
+          value={text}
         />
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
+        {text && (
+          <ListWrapper hidden={open}>
+            {products
+              .filter((product) =>
+                product.title.longTitle
+                  .toLowerCase()
+                  .includes(text.toLowerCase())
+              )
+              .map((product) => (
+                <ListItem>
+                  <Link
+                    to={`/product/${product.id}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={() => setOpen(true)}
+                  >
+                    {product.title.longTitle}
+                  </Link>
+                </ListItem>
+              ))}
+          </ListWrapper>
+        )}
       </SearchContainer>
     </>
   );

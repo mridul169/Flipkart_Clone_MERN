@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import ContextProvider from "./context/DataProvider.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DetailView from "./component/details/DetailView.jsx";
+import Cart from "./component/cart/Cart.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<DetailView />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </Box>
       </BrowserRouter>
